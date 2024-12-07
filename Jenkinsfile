@@ -45,13 +45,17 @@ pipeline {
 def build_docker_image(){
     echo "Building a docker image."
     sh "docker build -t lynnmal/sample-book-app ."
-    
+
     echo "Pushing image to docker registry."
     sh "docker push lynnmal/sample-book-app"
 }
 
 def deploy(String environment){
     echo "Deployment triggered on ${environment} env."
+    String lowercaseEnv  =environment.toLowerCase()
+    sh "docker compose stop sample-book-app-${toLowerCase}"
+    sh "docker compose rm sample-book-app-${toLowerCase}"
+    sh "docker compose up sample-book-app-${toLowerCase}"
 }
 
 def run_api_tests(String environment){
