@@ -52,10 +52,10 @@ def build_docker_image(){
 
 def deploy(String environment){
     echo "Deployment triggered on ${environment} env."
-    String lowercaseEnv  =environment.toLowerCase()
+    String lowercaseEnv  = environment.toLowerCase()
     sh "docker compose stop sample-book-app-${toLowerCase}"
     sh "docker compose rm sample-book-app-${toLowerCase}"
-    sh "docker compose up sample-book-app-${toLowerCase}"
+    sh "docker compose up id sample-book-app-${toLowerCase}"
 }
 
 def run_api_tests(String environment){
