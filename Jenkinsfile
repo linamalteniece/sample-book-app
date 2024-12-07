@@ -44,6 +44,10 @@ pipeline {
 
 def build_docker_image(){
     echo "Building a docker image."
+    sh "docker build -t lynnmal/sample-book-app ."
+    
+    echo "Pushing image to docker registry."
+    sh "docker push lynnmal/sample-book-app"
 }
 
 def deploy(String environment){
