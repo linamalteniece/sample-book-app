@@ -55,7 +55,7 @@ def deploy(String environment){
     String lowercaseEnv  = environment.toLowerCase()
     sh "docker compose stop sample-book-app-${toLowerCase}"
     sh "docker compose rm sample-book-app-${toLowerCase}"
-    sh "docker compose up id sample-book-app-${toLowerCase}"
+    sh "docker compose up -d sample-book-app-${toLowerCase}"
 }
 
 def run_api_tests(String environment){
