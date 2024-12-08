@@ -9,7 +9,10 @@ jobs:
   build-docker-image:
     runs-on: self-hosted
     steps:
-      - run: echo "Building docker image."
+      - name: Building docker image
+        run: |
+          sh "docker build -t lynnmal/sample-book-app ."
+      - run: sh "docker push lynnmal/sample-book-app"
 
   deploy-dev:
     runs-on: self-hosted
