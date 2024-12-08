@@ -16,7 +16,7 @@ jobs:
     runs-on: self-hosted
     needs: [build-docker-image]
     steps:
-      - uses: action/checkout@v4
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/deploy
         with:
           environment: 'dev'
@@ -30,7 +30,7 @@ jobs:
     runs-on: self-hosted
     needs: [test-dev]
     steps:
-      - uses: action/checkout@v4
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/deploy
         with:
           environment: 'stg'
@@ -44,7 +44,7 @@ jobs:
     runs-on: self-hosted
     needs: [test-stg]
     steps:
-      - uses: action/checkout@v4
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/deploy
         with:
           environment: 'prd'
