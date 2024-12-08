@@ -1,0 +1,11 @@
+  name: 'Build and and push Docker image'
+  description: 'Building docker and pushing it to Docker Hub'
+  runs:
+    using: composite
+    steps:
+      - name: Build Docker Image
+      run: docker build -t lynnmal/sample-book-app .
+      shell: bash
+      - name: Publish Docker Image to Docker Hub
+      run: docker push lynnmal/sample-book-app
+      shell: bash
