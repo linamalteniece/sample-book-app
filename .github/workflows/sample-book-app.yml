@@ -33,7 +33,7 @@ jobs:
       - uses: action/checkout@v4
       - uses: ./.github/actions/deploy
         with:
-          environment: 'dev'
+          environment: 'stg'
   test-stg:
     runs-on: self-hosted
     needs: [deploy-stg]
@@ -47,7 +47,7 @@ jobs:
       - uses: action/checkout@v4
       - uses: ./.github/actions/deploy
         with:
-          environment: 'dev'
+          environment: 'prd'
   test-prd:
     runs-on: self-hosted
     needs: [deploy-prd]
