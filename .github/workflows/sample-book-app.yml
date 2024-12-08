@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: Building docker image
         run: |
-          sh "docker build -t lynnmal/sample-book-app ."
-      - run: sh "docker push lynnmal/sample-book-app"
+          docker build -t lynnmal/sample-book-app .
+      - run: docker push lynnmal/sample-book-app
 
   deploy-dev:
     runs-on: self-hosted
