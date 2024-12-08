@@ -16,7 +16,10 @@ jobs:
     runs-on: self-hosted
     needs: [build-docker-image]
     steps:
-      - run: echo "Deployment triggered on DEV env."
+      - uses: action/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          environment: 'dev'
   test-dev:
     runs-on: self-hosted
     needs: [deploy-dev]
@@ -27,7 +30,10 @@ jobs:
     runs-on: self-hosted
     needs: [test-dev]
     steps:
-      - run: echo "Deployment triggered on STG env."
+      - uses: action/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          environment: 'dev'
   test-stg:
     runs-on: self-hosted
     needs: [deploy-stg]
@@ -38,7 +44,10 @@ jobs:
     runs-on: self-hosted
     needs: [test-stg]
     steps:
-      - run: echo "Deployment triggered on PRD env."
+      - uses: action/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          environment: 'dev'
   test-prd:
     runs-on: self-hosted
     needs: [deploy-prd]
