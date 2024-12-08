@@ -38,7 +38,7 @@ jobs:
     runs-on: self-hosted
     needs: [deploy-stg]
     steps:
-      - run: echo "Tests triggered on STF env."
+      - run: echo "Tests triggered on STG env."
 
   deploy-prd:
     runs-on: self-hosted
