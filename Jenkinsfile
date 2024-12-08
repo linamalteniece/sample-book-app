@@ -60,4 +60,7 @@ def deploy(String environment){
 
 def run_api_tests(String environment){
     echo "API Tests triggered on ${environment} env."
+    sh "docker pull lynnmal/js-api-tests"
+    sh "docker run --network=host --rm lynnmal/js-api-tests run BOOKS BOOKS_${environment}"
+
 }
