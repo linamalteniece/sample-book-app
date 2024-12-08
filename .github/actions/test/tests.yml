@@ -1,0 +1,15 @@
+name: 'Run API Tests'
+description: 'Action to run API Test against our Sample Book App service.'
+inputs:
+  environment:
+    description: 'Environment where to run Sample Book App API Tests against.'
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Pull API test image from Docker Hub
+      run: docker pull lynnmal/js-api-tests
+      shell: bash
+    - name: Run API Tests
+      run: docker run --network=host --rm lynnmal/js-api-tests run BOOKS BOOKS_${{ inputs.environment }}
+      shell: bash
